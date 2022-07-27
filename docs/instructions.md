@@ -4,8 +4,12 @@
 
 **Lightning Jet is command-line only service; an SSH Key is required to use this service.**
 
-## Setup 
+**IMPORTANT** 
+When this service is started it will automatically start rebalancing attempts. *Rebalancing may spend your satoshis!* 
+Please review https://github.com/itsneski/lightning-jet for more details.
 
+## Setup 
+Please note: for EOS v0.3.1 and above the default ssh user has changed from "root" to "start9", you will need to add `sudo` to the beginning of each command below.
 > 1. SSH into this Embassy (add a new SSH Key if needed)
 >
 > 2. Run the following command to enter the `lightning-jet.embassy` container:
@@ -13,6 +17,15 @@
 >    `docker exec -it lightning-jet.embassy /bin/bash`
 
 **You should now be able to run Lightning Jet commands.**
+
+## Logs
+Please note: for EOS v0.3.1 and above the default ssh user has changed from "root" to "start9", you will need to add `sudo` to the beginning of each command below.
+
+To access logs on Lightning Jet, you can run any of the following commands: 
+> 1. `docker exec lightning-jet.embassy cat /tmp/rebalancer.log`
+> 1. `docker exec lightning-jet.embassy cat /tmp/htlc-logger.log`
+> 1. `docker exec lightning-jet.embassy cat /tmp/launcher.log`
+> 1. `docker exec lightning-jet.embassy cat /tmp/telegram.log`
 
 ## Telegram Bot
 

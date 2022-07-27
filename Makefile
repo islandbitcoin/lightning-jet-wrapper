@@ -14,9 +14,14 @@ verify: lightning-jet.s9pk $(S9PK_PATH)
 clean:
 	rm -f image.tar
 	rm -f lightning-jet.s9pk
+	rm -f scripts/*.js
 
-lightning-jet.s9pk: manifest.yaml assets/compat/* image.tar docs/instructions.md $(ASSET_PATHS)
+lightning-jet.s9pk: manifest.yaml assets/compat/* image.tar docs/instructions.md  scripts/embassy.js $(ASSET_PATHS)
 	embassy-sdk pack
 
 image.tar: Dockerfile docker_entrypoint.sh assets/utils/*
 	DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --tag start9/lightning-jet/main:$(VERSION) --platform=linux/arm64 -o type=docker,dest=image.tar .
+
+scripts/embassy.js: scripts/**/*.ts
+	deno cache --reload scripts/embassy.ts
+	deno bundle scripts/embassy.ts scripts/embassy.js
