@@ -2,7 +2,7 @@ id: lightning-jet
 title: Lightning Jet
 version: 1.4.4
 release-notes: |
-  * Update to Jet v1.4.4-embassy
+  * Update to [Jet v1.4.4-embassy](https://github.com/itsneski/lightning-jet/releases/tag/v1.4.4-embassy)
   * Added LND v0.15.0 compatibility and JS improvements
 license: mit
 wrapper-repo: "https://github.com/cryptodread/lightning-jet-wrapper"
