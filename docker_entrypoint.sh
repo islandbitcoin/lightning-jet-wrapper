@@ -28,7 +28,7 @@ jet start daddy
 
 # Starting command line
 while true;
-do jet peers;
+do
 sleep 2000;
 done
 
