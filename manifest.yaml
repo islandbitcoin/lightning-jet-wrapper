@@ -1,7 +1,9 @@
 id: lightning-jet 
 title: Lightning Jet
-version: 1.4.3
-release-notes: Initial Release to EmbassyOS v0.3.0.3
+version: 1.4.4
+release-notes: |
+  * Update to [Jet v1.4.4-embassy](https://github.com/itsneski/lightning-jet/releases/tag/v1.4.4-embassy)
+  * Added LND v0.15.0 compatibility and JS improvements
 license: mit
 wrapper-repo: "https://github.com/cryptodread/lightning-jet-wrapper"
 upstream-repo: "https://github.com/itsneski/lightning-jet"
@@ -28,34 +30,9 @@ main:
 health-checks: {}
 config:
   get:
-    type: docker
-    image: compat
-    system: true
-    entrypoint: compat
-    args:
-      - config
-      - get
-      - /root
-      - "/mnt/assets/config_spec.yaml"
-    mounts:
-      compat: /mnt/assets
-      main: /root
-    io-format: yaml
+    type: script
   set:
-    type: docker
-    image: compat
-    system: true
-    entrypoint: compat
-    args:
-      - config
-      - set
-      - lightning-jet
-      - /root
-      - "/mnt/assets/config_rules.yaml"
-    mounts:
-      compat: /mnt/assets
-      main: /root
-    io-format: yaml
+    type: script
 volumes:
   main:
     type: data
@@ -69,24 +46,10 @@ volumes:
     volume-id: main
     path: "/public"
     readonly: true
-interfaces:
-  main:
-    name: Network Interface
-    description: Specifies the interface to listen on for HTTP connections.
-    tor-config:
-      port-mapping:
-        80: "80"
-    lan-config:
-      443:
-        ssl: true
-        internal: 80
-    ui: false
-    protocols:
-      - tcp
-      - http
+interfaces: {}
 dependencies:
   lnd:
-    version: ">=0.11.0 <0.15.0"
+    version: ">=0.11.0 <0.16.0"
     requirement:
       type: required
     config: ~
@@ -120,3 +83,12 @@ backup:
     mounts:
       BACKUP: "/mnt/backup"
       main: "/root/data"
+migrations:
+  from:
+    "*":
+      type: script
+      args: ["from"]
+  to:
+    "*":
+      type: script
+      args: ["to"]
