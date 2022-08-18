@@ -23,5 +23,4 @@ image.tar: Dockerfile docker_entrypoint.sh assets/utils/*
 	DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --tag start9/lightning-jet/main:$(VERSION) --platform=linux/arm64 -o type=docker,dest=image.tar .
 
 scripts/embassy.js: scripts/**/*.ts
-	deno cache --reload scripts/embassy.ts
 	deno bundle scripts/embassy.ts scripts/embassy.js
