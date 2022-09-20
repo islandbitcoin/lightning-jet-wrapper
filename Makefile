@@ -11,6 +11,9 @@ all: verify
 verify: lightning-jet.s9pk $(S9PK_PATH)
 	embassy-sdk verify s9pk $(S9PK_PATH)
 
+install: all
+	embassy-cli package install lightning-jet.s9pk
+
 clean:
 	rm -f image.tar
 	rm -f lightning-jet.s9pk
