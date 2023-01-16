@@ -1,6 +1,6 @@
 id: lightning-jet 
 title: Lightning Jet
-version: 1.5.2
+version: 1.5.5
 release-notes: |
   * Improved reliability
   * Updated to run on x86_64 architecture
