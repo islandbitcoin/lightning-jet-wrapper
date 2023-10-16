@@ -1,11 +1,10 @@
-id: lightning-jet 
+id: lightning-jet
 title: Lightning Jet
-version: 1.5.5
+version: 1.6.0
 release-notes: |
-  * v1.5.5 [Release Notes](https://github.com/itsneski/lightning-jet/releases/tag/v1.5.5-exclude)
-  * Update LND dependency version
+  * v1.6.0 [Release Notes](https://github.com/itsneski/lightning-jet/releases/tag/v1.6.0-db-cleanup)
 license: mit
-wrapper-repo: "https://github.com/cryptodread/lightning-jet-wrapper"
+wrapper-repo: "https://github.com/islandbitcoin/lightning-jet-wrapper"
 upstream-repo: "https://github.com/itsneski/lightning-jet"
 support-site: "https://github.com/itsneski/lightning-jet/issues"
 marketing-site: "https://github.com/itsneski"
@@ -44,7 +43,7 @@ volumes:
 interfaces: {}
 dependencies:
   lnd:
-    version: ">=0.11.0 <0.17.0"
+    version: ">=0.11.0 <0.18.0"
     requirement:
       type: required
     config: ~
@@ -55,15 +54,15 @@ backup:
   create:
     type: docker
     image: compat
-    system: true 
-    entrypoint: compat 
-    args: 
+    system: true
+    entrypoint: compat
+    args:
       - duplicity
       - create
       - /mnt/backup
       - /root/data
     mounts:
-      BACKUP: "/mnt/backup" 
+      BACKUP: "/mnt/backup"
       main: "/root/data"
   restore:
     type: docker
