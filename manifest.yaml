@@ -2,9 +2,9 @@ id: lightning-jet
 title: Lightning Jet
 version: 1.6.0
 release-notes: |
-  * v1.6.0 [Release Notes](https://github.com/itsneski/lightning-jet/releases/tag/v1.6.0-db-cleanup)
+  * Update LND Dependencies to 0.18.0
 license: mit
-wrapper-repo: "https://github.com/islandbitcoin/lightning-jet-wrapper"
+wrapper-repo: "https://github.com/islandbitcoin/lightning-jet-startos"
 upstream-repo: "https://github.com/itsneski/lightning-jet"
 support-site: "https://github.com/itsneski/lightning-jet/issues"
 marketing-site: "https://github.com/itsneski"
@@ -43,7 +43,7 @@ volumes:
 interfaces: {}
 dependencies:
   lnd:
-    version: ">=0.11.0 <0.18.0"
+    version: ">=0.17.0 <0.19.0"
     requirement:
       type: required
     config: ~
