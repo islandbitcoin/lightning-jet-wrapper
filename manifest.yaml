@@ -1,6 +1,6 @@
 id: lightning-jet
 title: Lightning Jet
-version: 1.6.0
+version: 1.6.0.1
 release-notes: |
   * Update LND Dependencies to 0.18.0
 license: mit
